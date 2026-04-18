@@ -37,7 +37,7 @@ function App() {
     if (user && user !== 'login' && user !== 'register') {
       fetchJobs();
     }
-  }, [user]);
+  }, [user, fetchJobs]);
 
   const addJob = async (jobData) => {
     await axios.post('https://job-tracker-backend-2rxu.onrender.com/api/jobs', jobData, {
