@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import JobForm from './components/JobForm';
 import JobList from './components/JobList';
@@ -22,7 +22,7 @@ function App() {
 
   const token = localStorage.getItem('token');
 
-  const fetchJobs = async () => {
+  const fetchJobs = useCallback(async () => {
     try {
       const res = await axios.get('https://job-tracker-backend-2rxu.onrender.com/api/jobs', {
         headers: { Authorization: `Bearer ${token}` }
@@ -31,8 +31,7 @@ function App() {
     } catch (err) {
       console.log(err);
     }
-  };
-
+  }, [token]);
   useEffect(() => {
     if (user && user !== 'login' && user !== 'register') {
       fetchJobs();
