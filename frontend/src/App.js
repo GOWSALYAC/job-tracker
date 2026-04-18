@@ -24,7 +24,7 @@ function App() {
 
   const fetchJobs = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/jobs', {
+      const res = await axios.get('https://job-tracker-backend-2rxu.onrender.com/api/jobs', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setJobs(res.data);
@@ -40,14 +40,14 @@ function App() {
   }, [user]);
 
   const addJob = async (jobData) => {
-    await axios.post('http://localhost:5000/api/jobs', jobData, {
+    await axios.post('https://job-tracker-backend-2rxu.onrender.com/api/jobs', jobData, {
       headers: { Authorization: `Bearer ${token}` }
     });
     fetchJobs();
   };
 
   const updateJob = async (id, jobData) => {
-    await axios.put(`http://localhost:5000/api/jobs/${id}`, jobData, {
+    await axios.put(`https://job-tracker-backend-2rxu.onrender.com/api/jobs/${id}`, jobData, {
       headers: { Authorization: `Bearer ${token}` }
     });
     setEditJob(null);
@@ -55,7 +55,7 @@ function App() {
   };
 
   const deleteJob = async (id) => {
-    await axios.delete(`http://localhost:5000/api/jobs/${id}`, {
+    await axios.delete(`https://job-tracker-backend-2rxu.onrender.com/api/jobs/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     });
     fetchJobs();
